@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 import { v1 as uuid } from "uuid";
-import { BrowserRouter as BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter as  Router, Routes, Route, Navigate} from "react-router-dom";
 
 
 import Sidebar from "./Sidebar";
@@ -66,7 +66,7 @@ function App() {
   
 
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar toggleSidebar={toggleSidebar} toggle={toggle} />
       <Routes>
         
@@ -74,7 +74,7 @@ function App() {
         <Route path="/notes/ids/" element={<Navigate to="/notes" />}/>
         <Route exact path="/notes" element={<>
         <Sidebar notes={notes} onAddnote={onAddnote} toggle={toggle} active={active} setActive={setActive} />
-        <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate}/>
+        <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate} />
         
         </>}/>
         <Route exact path={`/notes/ids/:id`} element={<>
@@ -82,7 +82,7 @@ function App() {
         <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate}/>
         </>}/>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

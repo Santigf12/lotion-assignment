@@ -1,7 +1,7 @@
 import "../node_modules/react-quill/dist/quill.snow.css";
 
+
 function Notesmain({active, noteUpdate, onDeletenote, toggle}) {
-    
      
     const onEditNote = (element, value) => {
         noteUpdate({

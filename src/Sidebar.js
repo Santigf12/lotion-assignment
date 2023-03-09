@@ -1,6 +1,13 @@
 
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 function Sidebar({notes, onAddnote, active, setActive, toggle}) {
+    let { id } = useParams();
+
+    
+    const noteIds = notes.map(note => note.id);
+    if (id !== undefined && noteIds.includes(id)) {
+        setActive(id);
+    }
     
 
     return (
