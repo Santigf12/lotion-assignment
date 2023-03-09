@@ -38,7 +38,11 @@ function App() {
   };
 
   const onDeletenote = (toDelete) => {
-    setNotes(notes.filter((note) => note.id !== toDelete));
+
+    const answer = window.confirm("Are you sure?");
+      if (answer) {
+        setNotes(notes.filter((note) => note.id !== toDelete));
+      }
   };
 
   const activeNote = () => {
@@ -63,7 +67,7 @@ function App() {
      
       
       <Routes>
-      
+      <Route path="/" element={<Navigate to ="/notes" />}/>
       <Route exact path="/notes" element={<>
         <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate}/>
         <Sidebar notes={notes} onAddnote={onAddnote} toggle={toggle} active={active} setActive={setActive} />
