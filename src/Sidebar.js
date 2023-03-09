@@ -22,7 +22,7 @@ function Sidebar({notes, onAddnote, active, setActive, toggle}) {
                             <div className="sidebar-note-title">
                                 <strong>{note.title === "" ? "Untitled" : note.title && note.title.slice(0, 20)}</strong>
                             </div>
-
+                            <p>{note.body && note.body.substr(0, 39) + "..."}</p>
                             <small className="note-meta">Date: {new Date(note.date).toISOString().slice(0, 10)} </small>
 
                         </div>
