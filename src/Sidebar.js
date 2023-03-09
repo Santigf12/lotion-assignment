@@ -1,6 +1,7 @@
 
-
+import {Link} from "react-router-dom";
 function Sidebar({notes, onAddnote, active, setActive, toggle}) {
+    
 
     return (
     <div className="grid">
@@ -15,18 +16,20 @@ function Sidebar({notes, onAddnote, active, setActive, toggle}) {
             <div className="sidebar-notes">
 
                 {notes.map((note) => (
-                    <div className={`sidebar-note ${note.id === active && "active"}`} onClick={() => {setActive(note.id)}}>
+                    <Link to={`/notes/ids/${note.id}`} key={note.id}>
+                        <div className={`sidebar-note ${note.id === active && "active"}`} onClick={() => {setActive(note.id)}}>
 
-                    <div className="sidebar-note-title">
-                        <strong>{note.title === "" ? "Untitled" : note.title && note.title.slice(0, 20)}</strong>
-                    </div>
+                            <div className="sidebar-note-title">
+                                <strong>{note.title === "" ? "Untitled" : note.title && note.title.slice(0, 20)}</strong>
+                            </div>
 
-                    <small className="note-meta">Date: {new Date(note.date).toISOString().slice(0, 10)} </small>
+                            <small className="note-meta">Date: {new Date(note.date).toISOString().slice(0, 10)} </small>
 
-                </div>
+                        </div>
+                    </Link>
                 ))}
 
-                
+
 
             </div>
 
