@@ -235,7 +235,7 @@ body{
 
 .main-note-edit,
 .main-note-preview {
-  height: 550px;
+  height: auto;
 }
 
 .active-note {
@@ -288,8 +288,7 @@ body{
 }
 
 .titlearea-right {
-  border: 1px solid #ccc;
-  border-bottom: 0px;
+  
   display: flex;
   flex-direction: column;
   width: 1000px;
@@ -298,7 +297,7 @@ body{
 
 .titlearea-right.active{
   width: 1380px;
-  border-left: 0px;
+  
 
 }
 .titlearea .button{
@@ -317,24 +316,20 @@ body{
 .titlearea input[type=text] {
   font-size: 20px;
   height: 40px;
-  border: 0px;
-  border: 1px solid #ccc;
   border-right: 0px;
-  border-top: 0px;
-  border-left: 0px;
   padding: 10px;
 }
 .titlearea input[type=date] {
-  height: 35px;
-  width: 150px;
-  padding: 10px;
-  border: 1px solid #ccc;
   border-right: 0px;
   border-top: 0px;
   border-bottom: 0px;
+  height: 35px;
+  width: 150px;
+  padding: 10px;
+  
 }
 .main-note-edit input {
-  border-bottom: 0px;
+  border: 1px solid #ccc;
   transition: all 0.5s ease;
 }
 
