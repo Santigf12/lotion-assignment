@@ -33,7 +33,7 @@ function Notesmain({active, noteUpdate, onDeletenote, toggle}) {
                     />
                     
                     
-                    <input id="date" type="date" onChange={(e) => onEditNote("date",e.target.value)} value={new Date(active.date).toISOString().slice(0, 10)} />
+                    <input id="date" type="date" onChange={(e) => onEditNote("date", e.target.value)} value={new Date(active.date).toISOString().slice(0, 10)} />
                 </div>
                 <div className="titlearea-left">
                     <a><button onClick={() => onDeletenote(active.id)} className="button" id="#">Delete</button></a>
