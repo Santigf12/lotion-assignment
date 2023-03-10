@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import { useState } from "react"
 import { v1 as uuid } from "uuid";
 import { BrowserRouter as  Router, Routes, Route, Navigate} from "react-router-dom";
 
@@ -12,10 +12,6 @@ function App() {
   const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : []);
   const [active, setActive] = useState(false);
   
-
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes])
 
   const toggleSidebar = () => {
     console.log("toggle");
@@ -33,19 +29,9 @@ function App() {
       date: Date.now(),
     };
 
-    setNotes([note_new, ...notes]);
-
-  };
-
-  
-
-
-  const onDeletenote = (toDelete) => {
-    const answer = window.confirm("Are you sure?");
-      if (answer) {
-        setNotes(notes.filter((note) => note.id !== toDelete));
-        window.location.href = '/notes'
-      }
+    const updatedNotes = [note_new, ...notes];
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
   };
 
   const activeNote = () => {
@@ -72,15 +58,18 @@ function App() {
         
         <Route path="/" element={<Navigate to ="/notes" />}/>
         <Route path="/notes/ids/" element={<Navigate to="/notes" />}/>
+        
         <Route exact path="/notes" element={<>
         <Sidebar notes={notes} onAddnote={onAddnote} toggle={toggle} active={active} setActive={setActive} />
-        <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate} />
-        
+        <Notesmain toggle={toggle} active={activeNote()} noteUpdate={noteUpdate} />
         </>}/>
+
         <Route exact path={`/notes/ids/:id`} element={<>
         <Sidebar notes={notes} onAddnote={onAddnote} toggle={toggle} active={active} setActive={setActive} />
-        <Notesmain onDeletenote={onDeletenote} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate}/>
+        <Notesmain setNotes={setNotes} notes={notes} toggle={toggle} active={activeNote()} noteUpdate={noteUpdate}/>
         </>}/>
+
+
       </Routes>
     </Router>
   );

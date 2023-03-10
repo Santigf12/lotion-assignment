@@ -309,8 +309,27 @@ body{
   float: left;
 }
 
+.titlearea .button-save{
+  user-select: none;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  transition: all 0.5s ease;
+  height: 75px;
+  width: 100px;
+  float: left;
+}
+
 .titlearea .button:hover{
   color: crimson;
+}
+
+.titlearea .button-save:hover{
+  color: green;
 }
 
 .titlearea input[type=text] {
